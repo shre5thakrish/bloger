@@ -1,0 +1,34 @@
+name: Auto Post to Blogger
+
+on:
+  schedule:
+    - cron: "0 * * * *"  # Every hour at minute 0
+  workflow_dispatch:
+
+jobs:
+  publish-post:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        cd src
+        pip install -r requirements.txt
+
+    - name: Run Blogger Automation
+      env:
+        DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        CLIENT_ID: ${{ secrets.CLIENT_ID }}
+        CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+        REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
+        BLOG_ID: ${{ secrets.BLOG_ID }}
+      run: |
+        cd src
+        python blog_automation.py
