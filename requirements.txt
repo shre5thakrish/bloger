@@ -1,8 +1,14 @@
 google-api-python-client==2.108.0
 google-auth-oauthlib==1.2.0
+google-auth==2.27.0
 requests==2.31.0
-with:
-  python-version: '3.10'
-python -m pip install --upgrade pip
-cd src
-python blog_automation.py
+python-dotenv==1.0.0
+beautifulsoup4==4.12.3
+markdownify==0.11.6
+google-api-python-client==2.108.0  # Official Blogger API client
+google-auth-oauthlib==1.2.0       # OAuth authentication
+google-auth==2.27.0               # Base authentication library
+requests==2.31.0                  # HTTP calls to DeepSeek API
+python-dotenv==1.0.0              # Environment variable handling
+beautifulsoup4==4.12.3            # HTML content processing
+markdownify==0.11.6               # Markdown conversion
